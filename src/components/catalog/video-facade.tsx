@@ -45,11 +45,12 @@ export function VideoFacade({
           className="group absolute inset-0 size-full"
         >
           <AppImage
-            src={posterUrl(provider, videoId) ?? fallbackPoster}
+            src={(!posterFailed && posterUrl(provider, videoId)) || fallbackPoster}
             alt=""
             fill
             sizes="(min-width: 1024px) 66vw, 100vw"
             className="object-cover"
+            onError={() => setPosterFailed(true)}
           />
           <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors group-hover:bg-black/40">
             <span className="bg-background text-foreground flex size-16 items-center justify-center rounded-full">
