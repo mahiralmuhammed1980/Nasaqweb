@@ -29,7 +29,8 @@
     "tabsLabel": "App type",
     "noFeatured": "Featured apps will appear here soon.",
     "hardware": "Related hardware",
-    "viewAllHardware": "View all hardware"
+    "viewAllHardware": "View all hardware",
+    "whyUs": "Why choose us"
   },
   "Footer": {
     "rights": "All rights reserved",
@@ -84,7 +85,10 @@
       "categories": "Categories",
       "offers": "Offers",
       "hardware": "Hardware",
-      "hardwareCategories": "Hardware categories"
+      "hardwareCategories": "Hardware categories",
+      "orders": "Orders",
+      "messages": "Messages",
+      "settings": "Settings"
     }
   },
   "Emails": {
@@ -346,7 +350,9 @@
       "percentMax": "The percentage can't exceed 100.",
       "endAfterStart": "The end date must be after the start date.",
       "invalidDate": "Invalid date.",
-      "imageRequired": "Add at least one image before publishing."
+      "imageRequired": "Add at least one image before publishing.",
+      "invalidPhone": "Invalid number.",
+      "invalidEmail": "Invalid email."
     }
   },
   "AdminCategories": {
@@ -573,6 +579,142 @@
       "WHATSAPP": "WhatsApp",
       "PHONE": "phone call",
       "EMAIL": "email"
+    }
+  },
+  "AdminOrders": {
+    "title": "Orders",
+    "exportCsv": "Export CSV",
+    "search": "Search",
+    "searchPlaceholder": "Name, phone or order number",
+    "status": "Status",
+    "all": "All",
+    "statuses": {
+      "NEW": "New",
+      "CONTACTED": "Contacted",
+      "QUOTED": "Quoted",
+      "WON": "Won",
+      "LOST": "Lost",
+      "SPAM": "Spam"
+    },
+    "product": "App",
+    "from": "From date",
+    "to": "To date",
+    "applyFilters": "Apply",
+    "total": "{count, plural, =0 {No orders} one {1 order} other {# orders}}",
+    "empty": "No matching orders.",
+    "date": "Date",
+    "customer": "Customer",
+    "item": "Request",
+    "pagination": "Pages",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {pages}",
+    "plan": "Plan",
+    "offer": "Applied offer",
+    "phone": "Phone",
+    "email": "Email",
+    "company": "Company",
+    "location": "Location",
+    "preferredChannel": "Preferred contact",
+    "channels": {
+      "WHATSAPP": "WhatsApp",
+      "PHONE": "Phone",
+      "EMAIL": "Email"
+    },
+    "language": "Order language",
+    "referrer": "Referring page",
+    "utm": "Campaign source",
+    "message": "Customer notes",
+    "hasWhatsapp": "has WhatsApp",
+    "backToList": "← All orders",
+    "orderTitle": "Order #{number}",
+    "quickActions": "Quick actions",
+    "openWhatsapp": "Open WhatsApp",
+    "call": "Call",
+    "replyByEmail": "Reply by email",
+    "whatsappGreeting": "Hello {name}, about your order number {number}:",
+    "updateStatus": "Update status",
+    "timeline": "Timeline",
+    "noActivity": "No activity yet.",
+    "activity": {
+      "statusChange": "Status changed from “{from}” to “{to}”",
+      "note": "Note: {text}",
+      "email": {
+        "sent": "Email sent ({kind}): {subject}",
+        "failed": "Email failed ({kind}): {subject}"
+      }
+    },
+    "emailKinds": {
+      "ADMIN_NEW_ORDER": "Admin notification",
+      "CUSTOMER_CONFIRMATION": "Customer confirmation",
+      "ADMIN_REPLY": "Admin reply",
+      "ADMIN_NEW_MESSAGE": "Message notification"
+    },
+    "addNote": "Add an internal note",
+    "saveNote": "Save note",
+    "replySubject": "Subject",
+    "replyBody": "Reply text",
+    "sendReply": "Send reply",
+    "sending": "Sending…",
+    "replySent": "Reply sent.",
+    "replyDefaultSubject": "About your request number {number}",
+    "noEmailOnOrder": "This order has no email. Reach out by phone or WhatsApp.",
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "EMAIL_FAILED": "The email could not be sent. The attempt was logged in the timeline.",
+      "NO_CUSTOMER_EMAIL": "The customer has no email.",
+      "NOT_FOUND": "Order not found."
+    }
+  },
+  "AdminMessages": {
+    "title": "Contact messages",
+    "empty": "No messages yet.",
+    "date": "Date",
+    "from": "From",
+    "subject": "Subject",
+    "status": "Status",
+    "statuses": {
+      "NEW": "New",
+      "READ": "Read",
+      "HANDLED": "Handled"
+    },
+    "back": "← All messages",
+    "email": "Email",
+    "phone": "Phone",
+    "replyByEmail": "Reply by email",
+    "call": "Call"
+  },
+  "AdminSettings": {
+    "title": "Settings",
+    "sections": {
+      "contact": "Contact details",
+      "social": "Social links",
+      "whyUs": "Why choose us"
+    },
+    "fields": {
+      "whatsapp": "WhatsApp number",
+      "phone": "Phone",
+      "email": "Contact email",
+      "notificationEmail": "Notification email",
+      "workingHours": "Working hours",
+      "whyTitle": "Title",
+      "whyDescription": "Description"
+    },
+    "hints": {
+      "whatsapp": "International format. If empty, WhatsApp buttons are hidden.",
+      "notificationEmail": "Receives customer orders and messages. If empty, ADMIN_EMAIL is used.",
+      "whyUs": "Up to 4 points shown on the home page."
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "x": "X",
+      "youtube": "YouTube",
+      "linkedin": "LinkedIn",
+      "telegram": "Telegram"
+    },
+    "add": {
+      "whyUs": "Add point"
     }
   }
 }

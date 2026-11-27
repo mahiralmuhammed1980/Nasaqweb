@@ -24,6 +24,8 @@ export default defineConfig({
     command: process.env.CI ? "pnpm start" : "pnpm dev",
     url: "http://localhost:3000/ar",
     reuseExistingServer: !process.env.CI,
+    // بريد محاكى (لا إرسال حقيقي) وبريد استقبال إشعارات ثابت للاختبارات
+    env: { EMAIL_TRANSPORT: "mock", ADMIN_EMAIL: "admin-notify@example.test" },
     timeout: 120_000,
   },
 });

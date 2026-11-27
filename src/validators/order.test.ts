@@ -90,6 +90,18 @@ describe("orderInputSchema", () => {
       issues(orderInputSchema, { ...base, marketingConsent: true }),
     ).toEqual([]);
   });
+  it("يقبل null للحقول الاختيارية (قيم محوَّلة سابقاً) ولا يفشل", () => {
+    expect(
+      issues(orderInputSchema, {
+        ...base,
+        email: null,
+        company: null,
+        city: null,
+        country: null,
+        message: null,
+      }),
+    ).toEqual([]);
+  });
   it("الاسم القصير والطويل", () => {
     expect(issues(orderInputSchema, { ...base, name: "أ" })).toContain(
       "name:required",

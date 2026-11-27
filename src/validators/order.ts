@@ -6,7 +6,7 @@ const optionalText = (max: number) =>
     .string()
     .trim()
     .max(max)
-    .optional()
+    .nullish()
     .transform((v) => (v ? v : null));
 
 const phone = z
@@ -24,7 +24,7 @@ const email = z
   .trim()
   .toLowerCase()
   .max(200)
-  .optional()
+  .nullish()
   .transform((v) => (v ? v : null))
   .refine((v) => v === null || z.email().safeParse(v).success, "invalidEmail");
 
@@ -83,7 +83,7 @@ export const contactInputSchema = z
       .string()
       .trim()
       .max(40)
-      .optional()
+      .nullish()
       .transform((value, ctx) => {
         if (!value) return null;
         const normalized = normalizePhone(value);

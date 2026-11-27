@@ -29,7 +29,8 @@
     "tabsLabel": "نوع التطبيق",
     "noFeatured": "ستظهر التطبيقات المميّزة هنا قريباً.",
     "hardware": "الأجهزة المرتبطة",
-    "viewAllHardware": "عرض كل الأجهزة"
+    "viewAllHardware": "عرض كل الأجهزة",
+    "whyUs": "لماذا نحن"
   },
   "Footer": {
     "rights": "جميع الحقوق محفوظة",
@@ -84,7 +85,10 @@
       "categories": "التصنيفات",
       "offers": "العروض",
       "hardware": "الأجهزة",
-      "hardwareCategories": "فئات الأجهزة"
+      "hardwareCategories": "فئات الأجهزة",
+      "orders": "الطلبات",
+      "messages": "الرسائل",
+      "settings": "الإعدادات"
     }
   },
   "Emails": {
@@ -346,7 +350,9 @@
       "percentMax": "النسبة لا تتجاوز 100.",
       "endAfterStart": "تاريخ الانتهاء يجب أن يكون بعد تاريخ البداية.",
       "invalidDate": "تاريخ غير صالح.",
-      "imageRequired": "أضف صورة واحدة على الأقل قبل النشر."
+      "imageRequired": "أضف صورة واحدة على الأقل قبل النشر.",
+      "invalidPhone": "رقم غير صالح.",
+      "invalidEmail": "بريد غير صالح."
     }
   },
   "AdminCategories": {
@@ -573,6 +579,142 @@
       "WHATSAPP": "واتساب",
       "PHONE": "اتصال هاتفي",
       "EMAIL": "البريد الإلكتروني"
+    }
+  },
+  "AdminOrders": {
+    "title": "الطلبات",
+    "exportCsv": "تصدير CSV",
+    "search": "بحث",
+    "searchPlaceholder": "الاسم أو الهاتف أو رقم الطلب",
+    "status": "الحالة",
+    "all": "الكل",
+    "statuses": {
+      "NEW": "جديد",
+      "CONTACTED": "تم التواصل",
+      "QUOTED": "تم إرسال عرض سعر",
+      "WON": "تمت الصفقة",
+      "LOST": "خسارة",
+      "SPAM": "مزعج"
+    },
+    "product": "التطبيق",
+    "from": "من تاريخ",
+    "to": "إلى تاريخ",
+    "applyFilters": "تطبيق",
+    "total": "{count, plural, =0 {لا طلبات} one {طلب واحد} two {طلبان} few {# طلبات} other {# طلباً}}",
+    "empty": "لا توجد طلبات مطابقة.",
+    "date": "التاريخ",
+    "customer": "الزبون",
+    "item": "الطلب",
+    "pagination": "الصفحات",
+    "previous": "السابق",
+    "next": "التالي",
+    "pageOf": "صفحة {page} من {pages}",
+    "plan": "الخطة",
+    "offer": "العرض المطبَّق",
+    "phone": "الهاتف",
+    "email": "البريد",
+    "company": "الشركة",
+    "location": "الموقع",
+    "preferredChannel": "طريقة التواصل المفضلة",
+    "channels": {
+      "WHATSAPP": "واتساب",
+      "PHONE": "اتصال",
+      "EMAIL": "بريد"
+    },
+    "language": "لغة الطلب",
+    "referrer": "الصفحة المرجعية",
+    "utm": "مصدر الحملة",
+    "message": "ملاحظات الزبون",
+    "hasWhatsapp": "عليه واتساب",
+    "backToList": "← كل الطلبات",
+    "orderTitle": "الطلب #{number}",
+    "quickActions": "إجراءات سريعة",
+    "openWhatsapp": "افتح واتساب",
+    "call": "اتصال",
+    "replyByEmail": "رد بالبريد",
+    "whatsappGreeting": "مرحباً {name}، بخصوص طلبك رقم {number}:",
+    "updateStatus": "تحديث الحالة",
+    "timeline": "الخط الزمني",
+    "noActivity": "لا نشاط بعد.",
+    "activity": {
+      "statusChange": "تغيّرت الحالة من «{from}» إلى «{to}»",
+      "note": "ملاحظة: {text}",
+      "email": {
+        "sent": "أُرسل بريد ({kind}): {subject}",
+        "failed": "فشل إرسال بريد ({kind}): {subject}"
+      }
+    },
+    "emailKinds": {
+      "ADMIN_NEW_ORDER": "إشعار المدير",
+      "CUSTOMER_CONFIRMATION": "تأكيد الزبون",
+      "ADMIN_REPLY": "ردّ المدير",
+      "ADMIN_NEW_MESSAGE": "إشعار رسالة"
+    },
+    "addNote": "إضافة ملاحظة داخلية",
+    "saveNote": "حفظ الملاحظة",
+    "replySubject": "الموضوع",
+    "replyBody": "نص الرد",
+    "sendReply": "إرسال الرد",
+    "sending": "جارٍ الإرسال…",
+    "replySent": "تم إرسال الرد.",
+    "replyDefaultSubject": "بخصوص طلبك رقم {number}",
+    "noEmailOnOrder": "لا يوجد بريد على هذا الطلب، تواصل عبر الهاتف أو واتساب.",
+    "errors": {
+      "generic": "حدث خطأ. حاول مرة أخرى.",
+      "EMAIL_FAILED": "تعذّر إرسال البريد. سُجّلت المحاولة في الخط الزمني.",
+      "NO_CUSTOMER_EMAIL": "لا بريد للزبون.",
+      "NOT_FOUND": "الطلب غير موجود."
+    }
+  },
+  "AdminMessages": {
+    "title": "رسائل التواصل",
+    "empty": "لا رسائل بعد.",
+    "date": "التاريخ",
+    "from": "من",
+    "subject": "الموضوع",
+    "status": "الحالة",
+    "statuses": {
+      "NEW": "جديدة",
+      "READ": "مقروءة",
+      "HANDLED": "تمت المتابعة"
+    },
+    "back": "← كل الرسائل",
+    "email": "البريد",
+    "phone": "الهاتف",
+    "replyByEmail": "رد بالبريد",
+    "call": "اتصال"
+  },
+  "AdminSettings": {
+    "title": "الإعدادات",
+    "sections": {
+      "contact": "بيانات التواصل",
+      "social": "روابط التواصل الاجتماعي",
+      "whyUs": "لماذا نحن"
+    },
+    "fields": {
+      "whatsapp": "رقم واتساب",
+      "phone": "الهاتف",
+      "email": "بريد التواصل",
+      "notificationEmail": "بريد استقبال الإشعارات",
+      "workingHours": "ساعات العمل",
+      "whyTitle": "العنوان",
+      "whyDescription": "الوصف"
+    },
+    "hints": {
+      "whatsapp": "بصيغة دولية. إن تُرك فارغاً تختفي أزرار واتساب.",
+      "notificationEmail": "تصل إليه طلبات ورسائل الزبائن. إن تُرك فارغاً يُستخدم ADMIN_EMAIL.",
+      "whyUs": "حتى 4 نقاط تظهر في الصفحة الرئيسية."
+    },
+    "social": {
+      "facebook": "فيسبوك",
+      "instagram": "إنستغرام",
+      "x": "إكس",
+      "youtube": "يوتيوب",
+      "linkedin": "لينكدإن",
+      "telegram": "تيليغرام"
+    },
+    "add": {
+      "whyUs": "إضافة نقطة"
     }
   }
 }

@@ -100,7 +100,9 @@ export function OrderForm({
       setValue("email", session.user.email);
   }, [session, getValues, setValue]);
 
-  const onSubmit = handleSubmit((values) => {
+  const onSubmit = handleSubmit(() => {
+    // نرسل القيم الخام: الخادم يعيد التحقق ويطبّع بنفسه (قيم المحوّل في العميل ليست مدخلاً صالحاً له)
+    const values = getValues();
     setFormError(null);
     startTransition(async () => {
       const result = await submitOrder({
