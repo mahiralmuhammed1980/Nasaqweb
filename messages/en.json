@@ -1,0 +1,36 @@
+{
+  "Site": {
+    "name": "Nasaq",
+    "description": "Desktop, web and Android applications, with the hardware that goes with them."
+  },
+  "Nav": {
+    "products": "Apps",
+    "offers": "Offers",
+    "hardware": "Hardware",
+    "learn": "Learn",
+    "contact": "Contact",
+    "menu": "Menu",
+    "main": "Main navigation"
+  },
+  "Locale": {
+    "label": "Language",
+    "ar": "العربية",
+    "en": "English",
+    "switchTo": "Switch to {language}"
+  },
+  "Home": {
+    "title": "Our apps, in your hands",
+    "subtitle": "Ready-made systems to run your business on desktop, web or mobile.",
+    "browse": "Browse apps",
+    "contact": "Contact us"
+  },
+  "Footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "back": "Back to home"
+  }
+}
