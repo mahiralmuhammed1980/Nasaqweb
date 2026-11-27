@@ -172,6 +172,8 @@ model Product {
   media        ProductMedia[]
   plans        ProductPlan[]
   faqs         ProductFaq[]
+  offers       OfferProduct[]
+  hardware     HardwareProduct[]
 
   @@index([status, featured, sortOrder])
   @@index([type])
@@ -293,4 +295,130 @@ model ProductFaqTranslation {
   faq ProductFaq @relation(fields: [faqId], references: [id], onDelete: Cascade)
 
   @@unique([faqId, locale])
+}
+
+// ===== المرحلة 3: العروض والأجهزة =====
+
+enum DiscountType {
+  PERCENT
+  FIXED
+}
+
+model Offer {
+  id            String       @id @default(cuid())
+  slug          String       @unique
+  discountType  DiscountType
+  discountValue Decimal      @db.Decimal(12, 2)
+  startsAt      DateTime
+  endsAt        DateTime
+  isActive      Boolean      @default(true)
+  bannerImage   String?
+  couponCode    String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  translations OfferTranslation[]
+  products     OfferProduct[]
+
+  @@index([isActive, startsAt, endsAt])
+}
+
+model OfferTranslation {
+  id          String   @id @default(cuid())
+  offerId     String
+  locale      String
+  title       String
+  description String   @default("")
+  terms       String   @default("")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  offer Offer @relation(fields: [offerId], references: [id], onDelete: Cascade)
+
+  @@unique([offerId, locale])
+}
+
+model OfferProduct {
+  offerId   String
+  productId String
+
+  offer   Offer   @relation(fields: [offerId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([offerId, productId])
+  @@index([productId])
+}
+
+model HardwareCategory {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  translations HardwareCategoryTranslation[]
+  hardware     Hardware[]
+}
+
+model HardwareCategoryTranslation {
+  id         String   @id @default(cuid())
+  categoryId String
+  locale     String
+  name       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  category HardwareCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, locale])
+}
+
+model Hardware {
+  id         String        @id @default(cuid())
+  slug       String        @unique
+  categoryId String?
+  brand      String
+  model      String
+  priceType  PriceType     @default(ON_REQUEST)
+  price      Decimal?      @db.Decimal(12, 2)
+  currency   String        @default("USD")
+  inStock    Boolean       @default(true)
+  images     String[]
+  // مصفوفة {keyAr, keyEn, value}
+  specs      Json          @default("[]")
+  status     ContentStatus @default(DRAFT)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  category     HardwareCategory?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  translations HardwareTranslation[]
+  products     HardwareProduct[]
+
+  @@index([status])
+  @@index([categoryId])
+}
+
+model HardwareTranslation {
+  id          String   @id @default(cuid())
+  hardwareId  String
+  locale      String
+  name        String
+  description String   @default("")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  hardware Hardware @relation(fields: [hardwareId], references: [id], onDelete: Cascade)
+
+  @@unique([hardwareId, locale])
+}
+
+model HardwareProduct {
+  hardwareId String
+  productId  String
+
+  hardware Hardware @relation(fields: [hardwareId], references: [id], onDelete: Cascade)
+  product  Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([hardwareId, productId])
+  @@index([productId])
 }

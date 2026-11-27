@@ -48,6 +48,24 @@ export default async function AdminLayout({
           >
             {t("nav.categories")}
           </Link>
+          <Link
+            href="/admin/offers"
+            className="hover:bg-muted rounded px-2 py-1.5 text-sm"
+          >
+            {t("nav.offers")}
+          </Link>
+          <Link
+            href="/admin/hardware"
+            className="hover:bg-muted rounded px-2 py-1.5 text-sm"
+          >
+            {t("nav.hardware")}
+          </Link>
+          <Link
+            href="/admin/hardware-categories"
+            className="hover:bg-muted rounded px-2 py-1.5 text-sm"
+          >
+            {t("nav.hardwareCategories")}
+          </Link>
         </nav>
       </aside>
       <div className="min-w-0 flex-1">{children}</div>

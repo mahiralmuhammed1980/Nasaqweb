@@ -4,6 +4,10 @@ import { CategoryManager } from "@/components/admin/category-manager";
 import { isLocale } from "@/i18n/routing";
 import { requireAdminPage } from "@/lib/auth/page-guards";
 import { db } from "@/lib/db";
+import {
+  deleteCategory,
+  saveCategory,
+} from "@/server/actions/admin/categories";
 
 export default async function AdminCategoriesPage({
   params,
@@ -30,7 +34,12 @@ export default async function AdminCategoriesPage({
   return (
     <>
       <h1 className="mb-6 text-2xl font-bold">{t("title")}</h1>
-      <CategoryManager categories={rows} />
+      <CategoryManager
+        categories={rows}
+        saveAction={saveCategory}
+        deleteAction={deleteCategory}
+        countLabel={t("products")}
+      />
     </>
   );
 }

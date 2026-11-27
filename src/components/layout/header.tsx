@@ -5,7 +5,14 @@ import { AccountMenu } from "./account-menu";
 import { LocaleSwitcher } from "./locale-switcher";
 
 // روابط مؤقتة: تُوجَّه كلها للرئيسية حتى تُبنى صفحاتها في المراحل التالية
-const NAV = ["products", "offers", "hardware", "learn", "contact"] as const;
+// learn وcontact روابط مؤقتة للرئيسية حتى تُبنى صفحاتهما (المرحلتان 5 و4)
+const NAV = [
+  { key: "products", href: "/products" },
+  { key: "offers", href: "/offers" },
+  { key: "hardware", href: "/hardware" },
+  { key: "learn", href: "/" },
+  { key: "contact", href: "/" },
+] as const;
 
 export async function Header() {
   const t = await getTranslations();
@@ -16,10 +23,10 @@ export async function Header() {
           {t("Site.name")}
         </Link>
         <nav aria-label={t("Nav.main")} className="hidden gap-1 md:flex">
-          {NAV.map((key) => (
+          {NAV.map(({ key, href }) => (
             <Link
               key={key}
-              href="/"
+              href={href}
               className="hover:bg-muted rounded-md px-3 py-2 text-sm"
             >
               {t(`Nav.${key}`)}

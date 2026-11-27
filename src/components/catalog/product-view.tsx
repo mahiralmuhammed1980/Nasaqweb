@@ -13,6 +13,10 @@ import { Markdown } from "@/components/ui/markdown";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { pickTranslation } from "@/lib/localized";
+import { effectivePriceOf } from "@/lib/product-pricing";
+import { Countdown } from "@/components/catalog/countdown";
+import { HardwareCard } from "@/components/catalog/hardware-card";
+import { OfferBadge } from "@/components/catalog/offer-badge";
 import { absoluteAsset, absoluteUrl, jsonLd } from "@/lib/seo";
 import type {
   ProductCard as ProductCardData,
@@ -62,6 +66,16 @@ export async function ProductView({
   const tr = pickTranslation(product.translations, locale);
   if (!tr) return null;
   const t = await getTranslations({ locale, namespace: "Products" });
+  const tOffers = await getTranslations({ locale, namespace: "Offers" });
+  const price = effectivePriceOf(product);
+  const offerTr =
+    price.kind === "PRICED" && price.offer
+      ? product.offers.find((o) => o.offer.id === price.offer?.id)?.offer
+          .translations
+      : undefined;
+  const offerTitle = offerTr
+    ? pickTranslation(offerTr, locale)?.title
+    : undefined;
   const hasLivePreview = product.type === "SAAS" && !!product.demoUrl;
   const shots = product.media.map((m) => ({
     url: m.url,
@@ -95,13 +109,24 @@ export async function ProductView({
           </p>
         )}
         <p className="text-2xl font-bold">
-          <ProductPrice
-            priceType={product.priceType}
-            price={product.price === null ? null : Number(product.price)}
-            currency={product.currency}
-            locale={locale}
-          />
+          <ProductPrice product={product} locale={locale} />
         </p>
+        {price.kind === "PRICED" && price.offer && (
+          <div className="bg-muted flex flex-wrap items-center gap-3 rounded-lg p-3">
+            <OfferBadge
+              offer={price.offer}
+              currency={product.currency}
+              locale={locale}
+            />
+            {offerTitle && (
+              <span className="text-sm font-medium">{offerTitle}</span>
+            )}
+            <span className="text-muted-foreground text-sm">
+              {tOffers("endsLabel")}
+            </span>
+            <Countdown endsAt={price.offer.endsAt.toISOString()} />
+          </div>
+        )}
         <div className="flex flex-wrap gap-3 pt-2">
           <Link
             href={orderHref}
@@ -154,6 +179,21 @@ export async function ProductView({
             {t("description")}
           </h2>
           <Markdown>{tr.description}</Markdown>
+        </section>
+      )}
+
+      {product.hardware.length > 0 && (
+        <section aria-labelledby="hardware-title">
+          <h2 id="hardware-title" className="text-2xl font-bold">
+            {t("compatibleHardware")}
+          </h2>
+          <ul className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {product.hardware.map(({ hardware }) => (
+              <li key={hardware.id}>
+                <HardwareCard hardware={hardware} locale={locale} />
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

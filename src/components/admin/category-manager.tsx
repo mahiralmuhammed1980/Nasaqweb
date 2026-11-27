@@ -6,10 +6,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
-import {
-  deleteCategory,
-  saveCategory,
-} from "@/server/actions/admin/categories";
 import { categorySchema, type CategoryInput } from "@/validators/product";
 import { DeleteButton } from "./delete-button";
 import { Field, inputClass } from "./field";
@@ -30,7 +26,23 @@ const blank: CategoryInput = {
   en: { name: "" },
 };
 
-export function CategoryManager({ categories }: { categories: CategoryRow[] }) {
+type Result = { ok: boolean; error?: string };
+
+type Props = {
+  categories: CategoryRow[];
+  /** الأفعال الإدارية (تصنيفات التطبيقات أو فئات الأجهزة) */
+  saveAction: (input: unknown) => Promise<Result>;
+  deleteAction: (input: unknown) => Promise<{ ok: boolean }>;
+  /** مسار ترجمة لعدّاد العناصر (مثل «التطبيقات» أو «الأجهزة») */
+  countLabel: string;
+};
+
+export function CategoryManager({
+  categories,
+  saveAction,
+  deleteAction,
+  countLabel,
+}: Props) {
   const t = useTranslations("AdminCategories");
   const tp = useTranslations("AdminProducts");
   const router = useRouter();
@@ -51,7 +63,7 @@ export function CategoryManager({ categories }: { categories: CategoryRow[] }) {
   const onSubmit = handleSubmit((values) => {
     setMessage(null);
     startTransition(async () => {
-      const result = await saveCategory({ ...values, id: editing });
+      const result = await saveAction({ ...values, id: editing });
       if (result.ok) {
         reset(blank);
         setEditing(undefined);
@@ -160,7 +172,7 @@ export function CategoryManager({ categories }: { categories: CategoryRow[] }) {
             <tr className="border-border border-b">
               <th className="py-2 text-start">{tp("fields.name")}</th>
               <th className="py-2 text-start">{tp("fields.slug")}</th>
-              <th className="py-2 text-start">{t("products")}</th>
+              <th className="py-2 text-start">{countLabel}</th>
               <th className="py-2" />
             </tr>
           </thead>
@@ -186,7 +198,7 @@ export function CategoryManager({ categories }: { categories: CategoryRow[] }) {
                   </Button>
                   <DeleteButton
                     id={row.id}
-                    action={deleteCategory}
+                    action={deleteAction}
                     confirmText={t("confirmDelete")}
                   />
                 </td>
