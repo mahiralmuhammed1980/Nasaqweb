@@ -1,4 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { isLocale } from "@/i18n/routing";
+import { requireAdminPage } from "@/lib/auth/page-guards";
 
 export default async function AdminHome({
   params,
@@ -6,7 +9,9 @@ export default async function AdminHome({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
+  await requireAdminPage(locale, "/admin");
   const t = await getTranslations("Admin");
   return (
     <>

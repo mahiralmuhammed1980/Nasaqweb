@@ -6,12 +6,16 @@ import {
   type SessionUser,
 } from "@/lib/auth/guards";
 
+/** خطأ متوقع من معالج الفعل يُعاد للواجهة برمزه (مثل SLUG_TAKEN). */
+export class ActionError extends Error {
+  constructor(public readonly code: string) {
+    super(code);
+    this.name = "ActionError";
+  }
+}
+
 export type ActionResult<T> =
-  | { ok: true; data: T }
-  | {
-      ok: false;
-      error: "VALIDATION" | "UNAUTHORIZED" | "FORBIDDEN" | "FAILED";
-    };
+  { ok: true; data: T } | { ok: false; error: string };
 
 /**
  * غلاف لكل Server Action إداري: التحقق بـ Zod ثم فحص صلاحية ADMIN داخل الدالة نفسها.
@@ -30,6 +34,7 @@ export function adminAction<S extends z.ZodType, R>(
     } catch (error) {
       if (error instanceof UnauthorizedError)
         return { ok: false, error: "UNAUTHORIZED" };
+      if (error instanceof ActionError) return { ok: false, error: error.code };
       if (error instanceof ForbiddenError)
         return { ok: false, error: "FORBIDDEN" };
       console.error(

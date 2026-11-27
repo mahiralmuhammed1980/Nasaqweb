@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { Link } from "@/i18n/navigation";
 import { isLocale } from "@/i18n/routing";
 import { requireAdminPage } from "@/lib/auth/page-guards";
 
@@ -28,7 +29,26 @@ export default async function AdminLayout({
         <p className="text-muted-foreground text-sm font-semibold">
           {t("sidebar")}
         </p>
-        {/* القائمة الجانبية فارغة حالياً؛ تُملأ بأقسام الإدارة في المراحل 2-6 */}
+        <nav aria-label={t("sidebar")} className="mt-3 flex flex-col gap-1">
+          <Link
+            href="/admin"
+            className="hover:bg-muted rounded px-2 py-1.5 text-sm"
+          >
+            {t("nav.home")}
+          </Link>
+          <Link
+            href="/admin/products"
+            className="hover:bg-muted rounded px-2 py-1.5 text-sm"
+          >
+            {t("nav.products")}
+          </Link>
+          <Link
+            href="/admin/categories"
+            className="hover:bg-muted rounded px-2 py-1.5 text-sm"
+          >
+            {t("nav.categories")}
+          </Link>
+        </nav>
       </aside>
       <div className="min-w-0 flex-1">{children}</div>
     </div>

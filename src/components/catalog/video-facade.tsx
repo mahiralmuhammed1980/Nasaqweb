@@ -45,7 +45,9 @@ export function VideoFacade({
           className="group absolute inset-0 size-full"
         >
           <AppImage
-            src={(!posterFailed && posterUrl(provider, videoId)) || fallbackPoster}
+            src={
+              (!posterFailed && posterUrl(provider, videoId)) || fallbackPoster
+            }
             alt=""
             fill
             sizes="(min-width: 1024px) 66vw, 100vw"
