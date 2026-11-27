@@ -59,7 +59,9 @@
       "VALIDATION": "The data is not valid.",
       "DISABLED": "Email sign-in is not available right now.",
       "SEND_FAILED": "We couldn't send the link. Please try again.",
-      "generic": "Sign-in failed. Try again, or use another sign-in method."
+      "generic": "Sign-in failed. Try again, or use another sign-in method.",
+      "RATE_LIMIT": "You requested too many links. Try again in {minutes} minutes.",
+      "CAPTCHA": "Security check failed. Refresh the page and try again."
     }
   },
   "AccountMenu": {
@@ -93,6 +95,43 @@
       "body": "Click the button below to sign in. The link is valid for a limited time and works once.",
       "button": "Sign in",
       "ignore": "If you didn't request this link, you can ignore this email."
+    },
+    "Common": {
+      "whatsapp": "WhatsApp"
+    },
+    "Order": {
+      "adminSubject": "New request #{number}: {item}",
+      "adminHeading": "New request number {number}",
+      "adminCta": "Open the request in the dashboard",
+      "labels": {
+        "item": "Request",
+        "plan": "Plan",
+        "offer": "Applied offer",
+        "name": "Name",
+        "phone": "Phone",
+        "email": "Email",
+        "company": "Company",
+        "location": "Location",
+        "channel": "Preferred contact"
+      },
+      "customerSubject": "We received your request #{number} — {siteName}",
+      "customerHeading": "Thank you, we received request number {number}",
+      "customerIntro": "We'll contact you by {channel} as soon as possible.",
+      "customerFooter": "If you didn't submit this request, you can ignore this email."
+    },
+    "Contact": {
+      "adminSubject": "New message: {subject}",
+      "adminHeading": "New contact message",
+      "adminCta": "Open the message in the dashboard",
+      "labels": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "subject": "Subject"
+      }
+    },
+    "Reply": {
+      "footer": "To reply, write to us at this address or reach us on WhatsApp."
     }
   },
   "Products": {
@@ -419,6 +458,121 @@
     "add": {
       "image": "Add image",
       "spec": "Add specification"
+    }
+  },
+  "PublicForm": {
+    "errors": {
+      "generic": "Invalid value.",
+      "required": "This field is required.",
+      "invalidPhone": "Enter an international number with the country code, e.g. +962791234567.",
+      "invalidEmail": "Enter a valid email address.",
+      "emailRequiredForChannel": "Email is required because you chose to be contacted by email.",
+      "targetRequired": "We couldn't identify the requested item.",
+      "planNeedsProduct": "Plans apply to apps only.",
+      "consentNeedsChannel": "To enable consent, enter your email or confirm your number has WhatsApp.",
+      "consentNeedsEmail": "To enable consent, enter your email address.",
+      "contactRequired": "Enter your email or phone so we can reply.",
+      "invalidPlan": "Invalid plan."
+    }
+  },
+  "Consent": {
+    "marketing": "I agree to receive offers and news from {siteName} through the contact details I entered (email and WhatsApp). I can unsubscribe at any time."
+  },
+  "Order": {
+    "title": "Order now",
+    "about": "Request about:",
+    "plan": "Plan",
+    "noPlan": "No plan selected",
+    "name": "Name",
+    "phone": "Phone number",
+    "phoneHint": "With country code, e.g. +962791234567.",
+    "phoneHasWhatsapp": "This number has WhatsApp",
+    "preferredChannel": "Preferred way to reach you",
+    "channels": {
+      "WHATSAPP": "WhatsApp",
+      "PHONE": "Phone call",
+      "EMAIL": "Email"
+    },
+    "email": "Email",
+    "emailHint": "Optional, required if you prefer email.",
+    "company": "Company / business",
+    "city": "City",
+    "country": "Country",
+    "message": "Notes",
+    "submit": "Send request",
+    "sending": "Sending…",
+    "close": "Close",
+    "thanksTitle": "We received your request",
+    "thanksNumber": "Your request number:",
+    "thanksBody": "We'll contact you soon the way you chose.",
+    "continueOnWhatsapp": "Continue on WhatsApp",
+    "whatsappFollowUp": "Hello, I sent request number {number} and would like to follow up.",
+    "errors": {
+      "RATE_LIMIT": "You sent too many requests. Try again in {minutes} minutes.",
+      "CAPTCHA": "Security check failed. Refresh the page and try again.",
+      "FAILED": "We couldn't send your request. Please try again.",
+      "NOT_FOUND": "The requested item is not available.",
+      "VALIDATION": "Check the highlighted fields.",
+      "targetRequired": "We couldn't identify the requested item.",
+      "consentNeedsChannel": "To enable consent, enter your email or confirm your number has WhatsApp."
+    }
+  },
+  "Contact": {
+    "title": "Contact us",
+    "description": "Write to us and we'll reply as soon as possible.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "contactHint": "Enter an email or a phone at least.",
+    "phoneHint": "With country code, e.g. +962791234567.",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Send message",
+    "sending": "Sending…",
+    "sentTitle": "We got your message",
+    "sentBody": "Thanks for reaching out. We'll reply soon.",
+    "info": "Contact details",
+    "whatsapp": "Message us on WhatsApp",
+    "callUs": "Call us:",
+    "hours": "Working hours:",
+    "whatsappMessage": "Hello, I'd like to ask about your apps.",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "x": "X",
+      "youtube": "YouTube",
+      "linkedin": "LinkedIn",
+      "telegram": "Telegram"
+    },
+    "errors": {
+      "RATE_LIMIT": "You sent too many messages. Try again in {minutes} minutes.",
+      "CAPTCHA": "Security check failed. Refresh the page and try again.",
+      "FAILED": "We couldn't send your message. Please try again.",
+      "VALIDATION": "Check the highlighted fields.",
+      "consentNeedsEmail": "To enable consent, enter your email address."
+    }
+  },
+  "WhatsApp": {
+    "float": "Chat on WhatsApp",
+    "button": "WhatsApp",
+    "defaultMessage": "Hello, I'd like to ask about your apps.",
+    "productMessage": "Hello, I'd like to ask about {name}."
+  },
+  "Unsubscribe": {
+    "title": "Unsubscribe",
+    "body": "Press the button below to stop marketing messages. This doesn't affect your orders.",
+    "confirm": "Confirm unsubscribe",
+    "working": "Working…",
+    "done": "You're unsubscribed. You won't receive marketing messages anymore.",
+    "already": "You're already unsubscribed.",
+    "failed": "We couldn't unsubscribe you. Please try again.",
+    "invalid": "This unsubscribe link is not valid."
+  },
+  "Orders": {
+    "channels": {
+      "WHATSAPP": "WhatsApp",
+      "PHONE": "phone call",
+      "EMAIL": "email"
     }
   }
 }

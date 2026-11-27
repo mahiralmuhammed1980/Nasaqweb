@@ -8,6 +8,7 @@ export const emailSchema = z.object({
 export const magicLinkSchema = emailSchema.extend({
   callbackUrl: z.string().optional(),
   locale: z.enum(["ar", "en"]),
+  turnstileToken: z.string().max(4096).optional(),
 });
 
 export const oauthSignInSchema = z.object({

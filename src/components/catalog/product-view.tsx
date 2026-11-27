@@ -10,11 +10,14 @@ import {
 import { ScreenshotGallery } from "@/components/catalog/screenshot-gallery";
 import { VideoFacade } from "@/components/catalog/video-facade";
 import { Markdown } from "@/components/ui/markdown";
-import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { pickTranslation } from "@/lib/localized";
 import { effectivePriceOf } from "@/lib/product-pricing";
 import { Countdown } from "@/components/catalog/countdown";
+import { OrderLauncher } from "@/components/forms/order-launcher";
+import { WhatsAppButton, WhatsAppProduct } from "@/components/layout/whatsapp";
+import { planOptions } from "@/lib/plan-options";
+import { getSiteSettings } from "@/server/queries/settings";
 import { HardwareCard } from "@/components/catalog/hardware-card";
 import { OfferBadge } from "@/components/catalog/offer-badge";
 import { absoluteAsset, absoluteUrl, jsonLd } from "@/lib/seo";
@@ -81,7 +84,13 @@ export async function ProductView({
     url: m.url,
     alt: (locale === "ar" ? m.altAr : m.altEn) || m.altAr || m.altEn || tr.name,
   }));
-  const orderHref = `/contact?product=${product.slug}`; // نموذج الطلب في المرحلة 4
+  const orderTarget = {
+    kind: "product" as const,
+    slug: product.slug,
+    name: tr.name,
+  };
+  const plans = await planOptions(product.plans, product.currency, locale);
+  const { contact } = await getSiteSettings();
 
   return (
     <article className="mx-auto max-w-5xl space-y-10 px-4 py-10 pb-28 md:pb-10">
@@ -128,12 +137,18 @@ export async function ProductView({
           </div>
         )}
         <div className="flex flex-wrap gap-3 pt-2">
-          <Link
-            href={orderHref}
+          <OrderLauncher
+            target={orderTarget}
+            plans={plans}
+            whatsappNumber={contact.whatsapp}
             className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-12 items-center justify-center rounded-md px-6 text-base font-medium"
           >
             {t("orderNow")}
-          </Link>
+          </OrderLauncher>
+          <WhatsAppButton
+            productName={tr.name}
+            className="inline-flex h-12 items-center justify-center rounded-md border border-green-700 px-6 text-base font-medium text-green-800 hover:bg-green-50"
+          />
         </div>
       </header>
 
@@ -171,7 +186,13 @@ export async function ProductView({
       )}
 
       <FeaturesSection product={product} locale={locale} />
-      <PlansSection product={product} locale={locale} />
+      <PlansSection
+        product={product}
+        locale={locale}
+        productName={tr.name}
+        options={plans}
+        whatsappNumber={contact.whatsapp}
+      />
 
       {tr.description && (
         <section aria-labelledby="description-title">
@@ -214,14 +235,22 @@ export async function ProductView({
         </section>
       )}
 
-      {/* شريط سفلي ثابت على الجوال؛ زر واتساب يُضاف في المرحلة 4 مع الإعدادات */}
-      <div className="border-border bg-background fixed inset-x-0 bottom-0 z-20 border-t p-3 md:hidden">
-        <Link
-          href={orderHref}
-          className="bg-primary text-primary-foreground flex h-12 w-full items-center justify-center rounded-md text-base font-medium"
+      <WhatsAppProduct name={tr.name} />
+
+      {/* شريط سفلي ثابت على الجوال: اطلب الآن + واتساب */}
+      <div className="border-border bg-background fixed inset-x-0 bottom-0 z-20 flex gap-2 border-t p-3 md:hidden">
+        <OrderLauncher
+          target={orderTarget}
+          plans={plans}
+          whatsappNumber={contact.whatsapp}
+          className="bg-primary text-primary-foreground flex h-12 flex-1 items-center justify-center rounded-md text-base font-medium"
         >
           {t("orderNow")}
-        </Link>
+        </OrderLauncher>
+        <WhatsAppButton
+          productName={tr.name}
+          className="flex h-12 flex-1 items-center justify-center rounded-md border border-green-700 text-base font-medium text-green-800"
+        />
       </div>
     </article>
   );

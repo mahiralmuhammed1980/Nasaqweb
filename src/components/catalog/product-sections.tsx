@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Check } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { OrderLauncher } from "@/components/forms/order-launcher";
 import type { Locale } from "@/i18n/routing";
 import { featureIcon } from "@/lib/feature-icons";
 import { formatMoney } from "@/lib/format";
@@ -51,9 +51,15 @@ export async function FeaturesSection({
 export async function PlansSection({
   product,
   locale,
+  productName,
+  options,
+  whatsappNumber,
 }: {
   product: ProductDetail;
   locale: Locale;
+  productName: string;
+  options: { id: string; label: string }[];
+  whatsappNumber: string | null;
 }) {
   if (product.plans.length === 0) return null;
   const t = await getTranslations({ locale, namespace: "Products" });
@@ -94,13 +100,19 @@ export async function PlansSection({
                   </li>
                 ))}
               </ul>
-              {/* نموذج الطلب يُبنى في المرحلة 4؛ الرابط مؤقت إلى /contact */}
-              <Link
-                href={`/contact?product=${product.slug}&plan=${plan.id}`}
+              <OrderLauncher
+                target={{
+                  kind: "product",
+                  slug: product.slug,
+                  name: productName,
+                }}
+                plans={options}
+                planId={plan.id}
+                whatsappNumber={whatsappNumber}
                 className="bg-primary text-primary-foreground hover:bg-primary/90 mt-5 inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-medium"
               >
                 {t("orderPlan")}
-              </Link>
+              </OrderLauncher>
             </li>
           );
         })}

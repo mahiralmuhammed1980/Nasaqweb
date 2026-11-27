@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/catalog/product-card";
 import { AppImage } from "@/components/ui/app-image";
-import { Link } from "@/i18n/navigation";
+import { OrderLauncher } from "@/components/forms/order-launcher";
 import { isLocale } from "@/i18n/routing";
 import { formatMoney } from "@/lib/format";
 import { parseSpecs, specKey } from "@/lib/hardware-specs";
@@ -18,6 +18,7 @@ import {
   getPublishedHardwareBySlug,
   listPublishedHardwareSlugs,
 } from "@/server/queries/hardware";
+import { getSiteSettings } from "@/server/queries/settings";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -63,6 +64,7 @@ export default async function HardwarePage({ params }: Props) {
   const tr = pickTranslation(hardware.translations, locale);
   if (!tr) notFound();
   const t = await getTranslations("Hardware");
+  const { contact } = await getSiteSettings();
   const specs = parseSpecs(hardware.specs);
   const priced = hardware.priceType !== "ON_REQUEST" && hardware.price !== null;
   const category = hardware.category
@@ -151,13 +153,13 @@ export default async function HardwarePage({ params }: Props) {
           <p className={hardware.inStock ? "text-green-700" : "text-red-700"}>
             {hardware.inStock ? t("inStock") : t("outOfStock")}
           </p>
-          {/* نموذج الطلب في المرحلة 4؛ الرابط مؤقت إلى /contact */}
-          <Link
-            href={`/contact?hardware=${hardware.slug}`}
+          <OrderLauncher
+            target={{ kind: "hardware", slug: hardware.slug, name: tr.name }}
+            whatsappNumber={contact.whatsapp}
             className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-12 items-center justify-center rounded-md px-6 text-base font-medium"
           >
             {t("inquire")}
-          </Link>
+          </OrderLauncher>
         </header>
       </div>
 

@@ -5,13 +5,13 @@ import { AccountMenu } from "./account-menu";
 import { LocaleSwitcher } from "./locale-switcher";
 
 // روابط مؤقتة: تُوجَّه كلها للرئيسية حتى تُبنى صفحاتها في المراحل التالية
-// learn وcontact روابط مؤقتة للرئيسية حتى تُبنى صفحاتهما (المرحلتان 5 و4)
+// learn رابط مؤقت للرئيسية حتى تُبنى صفحته (المرحلة 5)
 const NAV = [
   { key: "products", href: "/products" },
   { key: "offers", href: "/offers" },
   { key: "hardware", href: "/hardware" },
   { key: "learn", href: "/" },
-  { key: "contact", href: "/" },
+  { key: "contact", href: "/contact" },
 ] as const;
 
 export async function Header() {
