@@ -1,37 +1,9 @@
-import { randomUUID } from "node:crypto";
-import { test, expect, type BrowserContext } from "@playwright/test";
-import { Pool } from "pg";
-import "dotenv/config";
-
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const createdUsers: string[] = [];
+import { test, expect } from "@playwright/test";
+import { cleanupUsers, loginAs } from "./helpers";
 
 test.afterAll(async () => {
-  if (createdUsers.length)
-    await pool.query('DELETE FROM "User" WHERE id = ANY($1)', [createdUsers]);
-  await pool.end();
+  await cleanupUsers();
 });
-
-async function loginAs(context: BrowserContext, role: "USER" | "ADMIN") {
-  const id = `e2e_${randomUUID()}`;
-  const token = randomUUID();
-  await pool.query(
-    `INSERT INTO "User" (id, email, name, role, "updatedAt") VALUES ($1, $2, 'E2E', $3::"Role", now())`,
-    [id, `${id}@example.test`, role],
-  );
-  await pool.query(
-    `INSERT INTO "Session" (id, "sessionToken", "userId", expires, "updatedAt") VALUES ($1, $2, $1, now() + interval '1 day', now())`,
-    [id, token],
-  );
-  createdUsers.push(id);
-  await context.addCookies([
-    {
-      name: "authjs.session-token",
-      value: token,
-      url: "http://localhost:3000",
-    },
-  ]);
-}
 
 test("الزائر يُحوَّل من /account إلى /login مع callbackUrl", async ({ page }) => {
   await page.goto("/ar/account");
