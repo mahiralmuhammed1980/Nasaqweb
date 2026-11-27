@@ -32,5 +32,52 @@
   "NotFound": {
     "title": "Page not found",
     "back": "Back to home"
+  },
+  "Login": {
+    "title": "Sign in",
+    "subtitle": "Sign in to follow your orders and manage your preferences.",
+    "continueWith": "Continue with {provider}",
+    "providers": {
+      "google": "Google",
+      "facebook": "Facebook",
+      "microsoft": "Microsoft"
+    },
+    "or": "or",
+    "emailLabel": "Email address",
+    "sendLink": "Email me a sign-in link",
+    "checkEmailTitle": "Check your email",
+    "checkEmailBody": "We sent you a sign-in link. Open it from your inbox to finish signing in.",
+    "errors": {
+      "invalidEmail": "Enter a valid email address.",
+      "VALIDATION": "The data is not valid.",
+      "DISABLED": "Email sign-in is not available right now.",
+      "SEND_FAILED": "We couldn't send the link. Please try again.",
+      "generic": "Sign-in failed. Try again, or use another sign-in method."
+    }
+  },
+  "AccountMenu": {
+    "login": "Sign in",
+    "account": "My account",
+    "admin": "Dashboard",
+    "logout": "Sign out"
+  },
+  "Account": {
+    "title": "My account",
+    "welcome": "Welcome {name}"
+  },
+  "Admin": {
+    "title": "Dashboard",
+    "sidebar": "Sections",
+    "empty": "Admin sections will appear here in the coming phases."
+  },
+  "Emails": {
+    "LoginLink": {
+      "subject": "Your sign-in link for {siteName}",
+      "preview": "Your sign-in link",
+      "heading": "Hello,",
+      "body": "Click the button below to sign in. The link is valid for a limited time and works once.",
+      "button": "Sign in",
+      "ignore": "If you didn't request this link, you can ignore this email."
+    }
   }
 }
