@@ -3,6 +3,8 @@ import { AppImage } from "@/components/ui/app-image";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { pickTranslation } from "@/lib/localized";
+import { effectivePriceOf } from "@/lib/product-pricing";
+import { OfferBadge } from "./offer-badge";
 import type { ProductCard as ProductCardData } from "@/server/queries/products";
 import { ProductPrice } from "./product-price";
 
@@ -16,6 +18,7 @@ export async function ProductCard({
   const t = await getTranslations({ locale, namespace: "Products" });
   const tr = pickTranslation(product.translations, locale);
   if (!tr) return null;
+  const price = effectivePriceOf(product);
 
   return (
     <article className="group border-border bg-background relative flex flex-col overflow-hidden rounded-xl border transition-shadow focus-within:shadow-md hover:shadow-md">
@@ -30,6 +33,14 @@ export async function ProductCard({
         <span className="bg-background/90 absolute start-3 top-3 rounded-full px-3 py-1 text-xs font-medium">
           {t(`types.${product.type}`)}
         </span>
+        {price.kind === "PRICED" && price.offer && (
+          <OfferBadge
+            offer={price.offer}
+            currency={product.currency}
+            locale={locale}
+            className="absolute start-3 bottom-3"
+          />
+        )}
         {product.demoUrl && product.type === "SAAS" && (
           <span className="bg-primary text-primary-foreground absolute end-3 top-3 rounded-full px-3 py-1 text-xs font-medium">
             {t("tryLive")}
@@ -49,12 +60,7 @@ export async function ProductCard({
           {tr.tagline}
         </p>
         <p className="mt-auto pt-2 font-semibold">
-          <ProductPrice
-            priceType={product.priceType}
-            price={product.price === null ? null : Number(product.price)}
-            currency={product.currency}
-            locale={locale}
-          />
+          <ProductPrice product={product} locale={locale} />
         </p>
       </div>
     </article>

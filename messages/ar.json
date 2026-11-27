@@ -27,7 +27,9 @@
     "allTypes": "الكل",
     "viewAll": "عرض كل التطبيقات",
     "tabsLabel": "نوع التطبيق",
-    "noFeatured": "ستظهر التطبيقات المميّزة هنا قريباً."
+    "noFeatured": "ستظهر التطبيقات المميّزة هنا قريباً.",
+    "hardware": "الأجهزة المرتبطة",
+    "viewAllHardware": "عرض كل الأجهزة"
   },
   "Footer": {
     "rights": "جميع الحقوق محفوظة",
@@ -77,7 +79,10 @@
     "nav": {
       "home": "الرئيسية",
       "products": "التطبيقات",
-      "categories": "التصنيفات"
+      "categories": "التصنيفات",
+      "offers": "العروض",
+      "hardware": "الأجهزة",
+      "hardwareCategories": "فئات الأجهزة"
     }
   },
   "Emails": {
@@ -159,7 +164,9 @@
       "previous": "السابقة",
       "next": "التالية",
       "counter": "{current} من {total}"
-    }
+    },
+    "priceBefore": "السعر قبل الخصم {price}",
+    "compatibleHardware": "الأجهزة المتوافقة"
   },
   "AdminProducts": {
     "title": "التطبيقات",
@@ -295,7 +302,12 @@
       "FORBIDDEN": "ليس لديك صلاحية.",
       "UNAUTHORIZED": "سجّل الدخول أولاً.",
       "VALIDATION": "البيانات غير صحيحة.",
-      "fixFields": "صحّح الحقول المعلَّمة."
+      "fixFields": "صحّح الحقول المعلَّمة.",
+      "discountPositive": "قيمة الخصم يجب أن تكون أكبر من صفر.",
+      "percentMax": "النسبة لا تتجاوز 100.",
+      "endAfterStart": "تاريخ الانتهاء يجب أن يكون بعد تاريخ البداية.",
+      "invalidDate": "تاريخ غير صالح.",
+      "imageRequired": "أضف صورة واحدة على الأقل قبل النشر."
     }
   },
   "AdminCategories": {
@@ -307,5 +319,106 @@
     "products": "التطبيقات",
     "editAction": "تعديل",
     "confirmDelete": "حذف التصنيف؟ ستبقى تطبيقاته بلا تصنيف."
+  },
+  "Offers": {
+    "title": "العروض",
+    "description": "عروض وخصومات سارية الآن على تطبيقاتنا.",
+    "none": "لا توجد عروض سارية حالياً.",
+    "browseProducts": "تصفّح التطبيقات",
+    "badge": "خصم {discount}",
+    "endsLabel": "ينتهي العرض بعد",
+    "endsIn": "{days}ي {hours}س {minutes}د {seconds}ث",
+    "ended": "انتهى العرض",
+    "coupon": "كود الخصم:",
+    "includedProducts": "التطبيقات المشمولة",
+    "terms": "الشروط والأحكام",
+    "viewOffer": "عرض التفاصيل"
+  },
+  "Hardware": {
+    "listTitle": "الأجهزة",
+    "listDescription": "طابعات باركود وقارئات وأجهزة تعمل مع تطبيقاتنا.",
+    "filterCategory": "الفئة",
+    "all": "الكل",
+    "none": "لا توجد أجهزة مطابقة.",
+    "priceOnRequest": "السعر عند الطلب",
+    "inStock": "متوفر",
+    "outOfStock": "غير متوفر",
+    "inquire": "استفسر / اطلب",
+    "description": "الوصف",
+    "specs": "المواصفات",
+    "compatibleApps": "التطبيقات المتوافقة"
+  },
+  "AdminOffers": {
+    "title": "العروض",
+    "new": "عرض جديد",
+    "edit": "تعديل",
+    "editTitle": "تعديل: {name}",
+    "empty": "لا توجد عروض بعد.",
+    "state": "الحالة",
+    "productsCount": "المنتجات",
+    "confirmDelete": "حذف العرض نهائياً؟",
+    "noProducts": "لا توجد تطبيقات بعد.",
+    "states": {
+      "UPCOMING": "قادم",
+      "ACTIVE": "سارٍ",
+      "EXPIRED": "منتهٍ",
+      "DISABLED": "معطّل"
+    },
+    "sections": {
+      "basic": "الأساسيات",
+      "content": "المحتوى",
+      "products": "التطبيقات المشمولة"
+    },
+    "discountTypes": {
+      "PERCENT": "نسبة مئوية",
+      "FIXED": "مبلغ ثابت"
+    },
+    "fields": {
+      "title": "العنوان",
+      "description": "الوصف",
+      "terms": "الشروط",
+      "couponCode": "كود الخصم",
+      "discountType": "نوع الخصم",
+      "discountPercent": "نسبة الخصم %",
+      "discountAmount": "قيمة الخصم",
+      "startsAt": "تبدأ في",
+      "endsAt": "تنتهي في",
+      "isActive": "مفعّل",
+      "bannerImage": "صورة العرض",
+      "products": "التطبيقات"
+    },
+    "hints": {
+      "coupon": "اختياري. يُعرض للزبون فقط ولا يُطبَّق تلقائياً.",
+      "localTime": "بتوقيت جهازك."
+    }
+  },
+  "AdminHardware": {
+    "title": "الأجهزة",
+    "new": "جهاز جديد",
+    "editTitle": "تعديل: {name}",
+    "empty": "لا توجد أجهزة بعد.",
+    "categoriesTitle": "فئات الأجهزة",
+    "hardwareCount": "الأجهزة",
+    "sections": {
+      "basic": "الأساسيات",
+      "content": "المحتوى",
+      "images": "الصور",
+      "specs": "المواصفات",
+      "compatible": "التطبيقات المتوافقة"
+    },
+    "fields": {
+      "category": "الفئة",
+      "brand": "العلامة",
+      "model": "الموديل",
+      "inStock": "متوفر",
+      "image": "صورة",
+      "specKey": "المواصفة",
+      "specValue": "القيمة",
+      "compatibleProducts": "التطبيقات المتوافقة"
+    },
+    "add": {
+      "image": "إضافة صورة",
+      "spec": "إضافة مواصفة"
+    }
   }
 }

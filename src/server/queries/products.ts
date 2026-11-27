@@ -5,9 +5,16 @@ import type { ProductFilters } from "@/validators/catalog-filters";
 const PUBLISHED = { status: "PUBLISHED" } as const;
 
 /** تضمين ما تحتاجه بطاقة المنتج */
+/** العروض المرتبطة (الفعالة فقط)؛ فحص التاريخ يتم وقت الحساب في getEffectivePrice لا هنا. */
+const offersInclude = {
+  where: { offer: { isActive: true } },
+  include: { offer: { include: { translations: true } } },
+} as const;
+
 export const productCardInclude = {
   translations: true,
   category: { include: { translations: true } },
+  offers: offersInclude,
 } satisfies Prisma.ProductInclude;
 
 export const productDetailInclude = {
@@ -17,6 +24,18 @@ export const productDetailInclude = {
   media: { orderBy: { sortOrder: "asc" } },
   plans: { orderBy: { sortOrder: "asc" }, include: { translations: true } },
   faqs: { orderBy: { sortOrder: "asc" }, include: { translations: true } },
+  offers: offersInclude,
+  hardware: {
+    where: { hardware: { status: "PUBLISHED" } },
+    include: {
+      hardware: {
+        include: {
+          translations: true,
+          category: { include: { translations: true } },
+        },
+      },
+    },
+  },
 } satisfies Prisma.ProductInclude;
 
 export type ProductCard = Prisma.ProductGetPayload<{

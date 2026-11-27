@@ -27,7 +27,9 @@
     "allTypes": "All",
     "viewAll": "View all apps",
     "tabsLabel": "App type",
-    "noFeatured": "Featured apps will appear here soon."
+    "noFeatured": "Featured apps will appear here soon.",
+    "hardware": "Related hardware",
+    "viewAllHardware": "View all hardware"
   },
   "Footer": {
     "rights": "All rights reserved",
@@ -77,7 +79,10 @@
     "nav": {
       "home": "Home",
       "products": "Apps",
-      "categories": "Categories"
+      "categories": "Categories",
+      "offers": "Offers",
+      "hardware": "Hardware",
+      "hardwareCategories": "Hardware categories"
     }
   },
   "Emails": {
@@ -159,7 +164,9 @@
       "previous": "Previous",
       "next": "Next",
       "counter": "{current} of {total}"
-    }
+    },
+    "priceBefore": "Price before discount {price}",
+    "compatibleHardware": "Compatible hardware"
   },
   "AdminProducts": {
     "title": "Apps",
@@ -295,7 +302,12 @@
       "FORBIDDEN": "You don't have permission.",
       "UNAUTHORIZED": "Please sign in first.",
       "VALIDATION": "The data is not valid.",
-      "fixFields": "Fix the highlighted fields."
+      "fixFields": "Fix the highlighted fields.",
+      "discountPositive": "The discount must be greater than zero.",
+      "percentMax": "The percentage can't exceed 100.",
+      "endAfterStart": "The end date must be after the start date.",
+      "invalidDate": "Invalid date.",
+      "imageRequired": "Add at least one image before publishing."
     }
   },
   "AdminCategories": {
@@ -307,5 +319,106 @@
     "products": "Apps",
     "editAction": "Edit",
     "confirmDelete": "Delete this category? Its apps will be left without a category."
+  },
+  "Offers": {
+    "title": "Offers",
+    "description": "Current deals and discounts on our apps.",
+    "none": "There are no active offers right now.",
+    "browseProducts": "Browse apps",
+    "badge": "{discount} off",
+    "endsLabel": "Offer ends in",
+    "endsIn": "{days}d {hours}h {minutes}m {seconds}s",
+    "ended": "Offer ended",
+    "coupon": "Coupon code:",
+    "includedProducts": "Included apps",
+    "terms": "Terms and conditions",
+    "viewOffer": "View details"
+  },
+  "Hardware": {
+    "listTitle": "Hardware",
+    "listDescription": "Barcode printers, scanners and devices that work with our apps.",
+    "filterCategory": "Category",
+    "all": "All",
+    "none": "No matching hardware.",
+    "priceOnRequest": "Price on request",
+    "inStock": "In stock",
+    "outOfStock": "Out of stock",
+    "inquire": "Inquire / Order",
+    "description": "Description",
+    "specs": "Specifications",
+    "compatibleApps": "Compatible apps"
+  },
+  "AdminOffers": {
+    "title": "Offers",
+    "new": "New offer",
+    "edit": "Edit",
+    "editTitle": "Edit: {name}",
+    "empty": "No offers yet.",
+    "state": "Status",
+    "productsCount": "Apps",
+    "confirmDelete": "Delete this offer permanently?",
+    "noProducts": "No apps yet.",
+    "states": {
+      "UPCOMING": "Upcoming",
+      "ACTIVE": "Active",
+      "EXPIRED": "Expired",
+      "DISABLED": "Disabled"
+    },
+    "sections": {
+      "basic": "Basics",
+      "content": "Content",
+      "products": "Included apps"
+    },
+    "discountTypes": {
+      "PERCENT": "Percentage",
+      "FIXED": "Fixed amount"
+    },
+    "fields": {
+      "title": "Title",
+      "description": "Description",
+      "terms": "Terms",
+      "couponCode": "Coupon code",
+      "discountType": "Discount type",
+      "discountPercent": "Discount %",
+      "discountAmount": "Discount amount",
+      "startsAt": "Starts at",
+      "endsAt": "Ends at",
+      "isActive": "Enabled",
+      "bannerImage": "Offer image",
+      "products": "Apps"
+    },
+    "hints": {
+      "coupon": "Optional. Shown to the customer only; not applied automatically.",
+      "localTime": "In your device's time zone."
+    }
+  },
+  "AdminHardware": {
+    "title": "Hardware",
+    "new": "New hardware",
+    "editTitle": "Edit: {name}",
+    "empty": "No hardware yet.",
+    "categoriesTitle": "Hardware categories",
+    "hardwareCount": "Hardware",
+    "sections": {
+      "basic": "Basics",
+      "content": "Content",
+      "images": "Images",
+      "specs": "Specifications",
+      "compatible": "Compatible apps"
+    },
+    "fields": {
+      "category": "Category",
+      "brand": "Brand",
+      "model": "Model",
+      "inStock": "In stock",
+      "image": "Image",
+      "specKey": "Specification",
+      "specValue": "Value",
+      "compatibleProducts": "Compatible apps"
+    },
+    "add": {
+      "image": "Add image",
+      "spec": "Add specification"
+    }
   }
 }

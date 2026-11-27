@@ -13,8 +13,8 @@ import {
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
-// ISR: الصفحة ثابتة، وتُعاد عند الحفظ من لوحة التحكم عبر revalidatePath.
-export const revalidate = 3600;
+// ISR: الصفحة ثابتة وتُعاد عند الحفظ من الإدارة (revalidatePath)، وكل 60 ثانية كحد أقصى لتتبّع العروض.
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   try {
