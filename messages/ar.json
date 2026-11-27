@@ -22,7 +22,12 @@
     "title": "تطبيقاتنا بين يديك",
     "subtitle": "أنظمة جاهزة لإدارة عملك، على سطح المكتب أو الويب أو الجوال.",
     "browse": "تصفّح التطبيقات",
-    "contact": "تواصل معنا"
+    "contact": "تواصل معنا",
+    "featured": "تطبيقات مميّزة",
+    "allTypes": "الكل",
+    "viewAll": "عرض كل التطبيقات",
+    "tabsLabel": "نوع التطبيق",
+    "noFeatured": "ستظهر التطبيقات المميّزة هنا قريباً."
   },
   "Footer": {
     "rights": "جميع الحقوق محفوظة",
@@ -32,5 +37,275 @@
   "NotFound": {
     "title": "الصفحة غير موجودة",
     "back": "العودة للرئيسية"
+  },
+  "Login": {
+    "title": "تسجيل الدخول",
+    "subtitle": "سجّل دخولك لمتابعة طلباتك وإدارة تفضيلاتك.",
+    "continueWith": "المتابعة عبر {provider}",
+    "providers": {
+      "google": "Google",
+      "facebook": "Facebook",
+      "microsoft": "Microsoft"
+    },
+    "or": "أو",
+    "emailLabel": "البريد الإلكتروني",
+    "sendLink": "أرسل لي رابط الدخول",
+    "checkEmailTitle": "تحقق من بريدك",
+    "checkEmailBody": "أرسلنا إليك رابط دخول. افتحه من بريدك لإكمال تسجيل الدخول.",
+    "errors": {
+      "invalidEmail": "أدخل بريداً إلكترونياً صحيحاً.",
+      "VALIDATION": "البيانات غير صحيحة.",
+      "DISABLED": "الدخول بالبريد غير متاح حالياً.",
+      "SEND_FAILED": "تعذّر إرسال الرابط. حاول مرة أخرى.",
+      "generic": "تعذّر تسجيل الدخول. حاول مرة أخرى، أو جرّب طريقة دخول أخرى."
+    }
+  },
+  "AccountMenu": {
+    "login": "دخول",
+    "account": "حسابي",
+    "admin": "لوحة التحكم",
+    "logout": "تسجيل الخروج"
+  },
+  "Account": {
+    "title": "حسابي",
+    "welcome": "أهلاً {name}"
+  },
+  "Admin": {
+    "title": "لوحة التحكم",
+    "sidebar": "الأقسام",
+    "empty": "ستظهر أقسام الإدارة هنا في المراحل القادمة.",
+    "nav": {
+      "home": "الرئيسية",
+      "products": "التطبيقات",
+      "categories": "التصنيفات"
+    }
+  },
+  "Emails": {
+    "LoginLink": {
+      "subject": "رابط الدخول إلى {siteName}",
+      "preview": "رابط تسجيل الدخول",
+      "heading": "مرحباً،",
+      "body": "اضغط على الزر أدناه لتسجيل الدخول. الرابط صالح لمدة محدودة ويعمل مرة واحدة.",
+      "button": "تسجيل الدخول",
+      "ignore": "إن لم تطلب هذا الرابط فتجاهل الرسالة."
+    }
+  },
+  "Products": {
+    "types": {
+      "EXE": "سطح المكتب",
+      "SAAS": "تطبيق ويب",
+      "APK": "أندرويد"
+    },
+    "listTitle": "التطبيقات",
+    "listDescription": "تصفّح تطبيقاتنا وجرّب ما يناسب عملك.",
+    "search": "بحث",
+    "searchPlaceholder": "ابحث بالاسم أو الوصف",
+    "filterType": "النوع",
+    "filterCategory": "التصنيف",
+    "all": "الكل",
+    "sortLabel": "الترتيب",
+    "sorts": {
+      "featured": "المميّز",
+      "newest": "الأحدث",
+      "price_asc": "السعر: الأقل أولاً",
+      "price_desc": "السعر: الأعلى أولاً"
+    },
+    "resultsCount": "{count, plural, =0 {لا نتائج} one {نتيجة واحدة} two {نتيجتان} few {# نتائج} other {# نتيجة}}",
+    "noResults": "لا توجد تطبيقات مطابقة. جرّب تغيير الفلاتر.",
+    "priceOnRequest": "السعر عند الطلب",
+    "priceFrom": "من {price}",
+    "tryLive": "جرّب مباشرة",
+    "version": "الإصدار {version}",
+    "orderNow": "اطلب الآن",
+    "orderPlan": "اطلب هذه الخطة",
+    "downloadTrial": "تحميل نسخة تجريبية",
+    "media": "العرض",
+    "description": "الوصف التفصيلي",
+    "features": "الميزات",
+    "plans": "خطط الأسعار",
+    "recommended": "الأكثر طلباً",
+    "faq": "أسئلة شائعة",
+    "related": "تطبيقات مشابهة",
+    "billing": {
+      "ONE_TIME": "مرة واحدة",
+      "MONTHLY": "شهرياً",
+      "YEARLY": "سنوياً"
+    },
+    "preview": {
+      "title": "جرّب الآن",
+      "start": "ابدأ التجربة",
+      "openNewTab": "افتح التجربة في نافذة جديدة",
+      "devices": "حجم الجهاز",
+      "device": {
+        "desktop": "سطح المكتب",
+        "tablet": "تابلت",
+        "mobile": "جوال"
+      },
+      "credentials": "بيانات الدخول التجريبية",
+      "username": "المستخدم",
+      "password": "كلمة المرور",
+      "copy": "نسخ",
+      "copied": "تم النسخ",
+      "note": "هذه نسخة تجريبية تُعاد بياناتها دورياً.",
+      "frameTitle": "معاينة حية للتطبيق"
+    },
+    "video": {
+      "play": "تشغيل فيديو {title}"
+    },
+    "gallery": {
+      "open": "فتح اللقطة: {alt}",
+      "dialog": "معرض اللقطات",
+      "close": "إغلاق",
+      "previous": "السابقة",
+      "next": "التالية",
+      "counter": "{current} من {total}"
+    }
+  },
+  "AdminProducts": {
+    "title": "التطبيقات",
+    "new": "تطبيق جديد",
+    "empty": "لا توجد تطبيقات بعد.",
+    "edit": "تعديل",
+    "editTitle": "تعديل: {name}",
+    "delete": "حذف",
+    "confirmDelete": "حذف هذا العنصر نهائياً؟ لا يمكن التراجع.",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ…",
+    "saved": "تم الحفظ.",
+    "preview": "معاينة",
+    "backToList": "العودة للقائمة",
+    "backToEdit": "العودة للتعديل",
+    "previewBanner": "معاينة داخلية. الحالة الحالية: {status}. الزوار لا يرون إلا المنشور.",
+    "noCategory": "بدون تصنيف",
+    "noVideo": "بدون فيديو",
+    "tabs": {
+      "ar": "العربية",
+      "en": "English"
+    },
+    "types": {
+      "EXE": "سطح المكتب",
+      "SAAS": "تطبيق ويب",
+      "APK": "أندرويد"
+    },
+    "status": {
+      "DRAFT": "مسودة",
+      "PUBLISHED": "منشور",
+      "ARCHIVED": "مؤرشف"
+    },
+    "priceTypes": {
+      "FIXED": "سعر ثابت",
+      "FROM": "ابتداءً من",
+      "ON_REQUEST": "عند الطلب"
+    },
+    "billing": {
+      "ONE_TIME": "مرة واحدة",
+      "MONTHLY": "شهرياً",
+      "YEARLY": "سنوياً"
+    },
+    "sections": {
+      "basic": "الأساسيات",
+      "price": "السعر",
+      "cover": "صورة الغلاف",
+      "content": "المحتوى",
+      "demo": "المعاينة والفيديو",
+      "features": "الميزات",
+      "media": "لقطات الشاشة",
+      "plans": "خطط الأسعار",
+      "faqs": "الأسئلة الشائعة"
+    },
+    "fields": {
+      "slug": "المعرّف في الرابط (slug)",
+      "type": "النوع",
+      "status": "الحالة",
+      "category": "التصنيف",
+      "platforms": "المنصات والمتطلبات",
+      "version": "الإصدار",
+      "sortOrder": "ترتيب العرض",
+      "featured": "مميّز (يظهر في الرئيسية)",
+      "priceType": "نوع السعر",
+      "price": "السعر",
+      "currency": "العملة",
+      "coverImage": "الغلاف",
+      "name": "الاسم",
+      "tagline": "السطر التعريفي",
+      "description": "الوصف التفصيلي",
+      "seoTitle": "عنوان SEO",
+      "seoDescription": "وصف SEO",
+      "demoUrl": "رابط النسخة التجريبية",
+      "demoEmbeddable": "يسمح التطبيق التجريبي بالتضمين في إطار (iframe)",
+      "demoUsername": "مستخدم تجريبي",
+      "demoPassword": "كلمة مرور تجريبية",
+      "videoProvider": "مزوّد الفيديو",
+      "videoId": "معرّف الفيديو",
+      "trialDownloadUrl": "رابط تحميل نسخة تجريبية",
+      "icon": "الأيقونة",
+      "title": "العنوان",
+      "shortDescription": "وصف قصير",
+      "screenshot": "لقطة",
+      "alt": "النص البديل",
+      "billingPeriod": "الفترة",
+      "highlighted": "خطة مميّزة",
+      "planName": "اسم الخطة",
+      "planFeatures": "ميزات الخطة",
+      "question": "السؤال",
+      "answer": "الجواب"
+    },
+    "hints": {
+      "slug": "أحرف إنجليزية صغيرة وأرقام وشرطات فقط، مثل my-app.",
+      "platforms": "مثل: Windows 10+ أو Android 8+.",
+      "markdown": "يدعم Markdown.",
+      "englishOptional": "الإنجليزية اختيارية: إن تُركت فارغة تُعرض العربية للزائر الإنجليزي.",
+      "demoUrl": "نسخة تجريبية فقط وليست نسخة الإنتاج.",
+      "videoId": "YouTube: المعرّف (11 حرفاً). Bunny: libraryId/videoGuid.",
+      "planFeatures": "ميزة في كل سطر."
+    },
+    "add": {
+      "feature": "إضافة ميزة",
+      "media": "إضافة لقطة",
+      "plan": "إضافة خطة",
+      "faq": "إضافة سؤال"
+    },
+    "row": {
+      "up": "أعلى",
+      "down": "أسفل",
+      "remove": "حذف"
+    },
+    "image": {
+      "choose": "اختيار ملف",
+      "uploading": "جارٍ الرفع…",
+      "hint": "JPG أو PNG أو WebP حتى {max}MB، أو اسحب الملف وأفلته هنا.",
+      "errorType": "النوع غير مدعوم. استخدم JPG أو PNG أو WebP.",
+      "errorSize": "الحجم يتجاوز {max}MB.",
+      "errorUpload": "تعذّر رفع الصورة.",
+      "notConfigured": "التخزين غير مضبوط. أدخل رابط الصورة يدوياً."
+    },
+    "errors": {
+      "generic": "حدث خطأ. حاول مرة أخرى.",
+      "required": "هذا الحقل مطلوب.",
+      "invalidSlug": "استخدم أحرفاً إنجليزية صغيرة وأرقاماً وشرطات فقط.",
+      "invalidCurrency": "رمز عملة من 3 أحرف، مثل USD.",
+      "invalidUrl": "رابط غير صالح (https أو مسار يبدأ بـ /).",
+      "priceRequired": "السعر مطلوب وأكبر من صفر.",
+      "videoBoth": "اختر المزوّد وأدخل المعرّف معاً.",
+      "videoInvalid": "معرّف الفيديو غير صالح لهذا المزوّد.",
+      "slugTaken": "هذا المعرّف مستخدم.",
+      "SLUG_TAKEN": "هذا المعرّف مستخدم.",
+      "NOT_FOUND": "العنصر غير موجود.",
+      "CATEGORY_NOT_FOUND": "التصنيف غير موجود.",
+      "FORBIDDEN": "ليس لديك صلاحية.",
+      "UNAUTHORIZED": "سجّل الدخول أولاً.",
+      "VALIDATION": "البيانات غير صحيحة.",
+      "fixFields": "صحّح الحقول المعلَّمة."
+    }
+  },
+  "AdminCategories": {
+    "title": "التصنيفات",
+    "new": "تصنيف جديد",
+    "edit": "تعديل التصنيف",
+    "cancel": "إلغاء",
+    "empty": "لا توجد تصنيفات.",
+    "products": "التطبيقات",
+    "editAction": "تعديل",
+    "confirmDelete": "حذف التصنيف؟ ستبقى تطبيقاته بلا تصنيف."
   }
 }

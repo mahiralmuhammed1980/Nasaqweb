@@ -22,7 +22,12 @@
     "title": "Our apps, in your hands",
     "subtitle": "Ready-made systems to run your business on desktop, web or mobile.",
     "browse": "Browse apps",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "featured": "Featured apps",
+    "allTypes": "All",
+    "viewAll": "View all apps",
+    "tabsLabel": "App type",
+    "noFeatured": "Featured apps will appear here soon."
   },
   "Footer": {
     "rights": "All rights reserved",
@@ -32,5 +37,275 @@
   "NotFound": {
     "title": "Page not found",
     "back": "Back to home"
+  },
+  "Login": {
+    "title": "Sign in",
+    "subtitle": "Sign in to follow your orders and manage your preferences.",
+    "continueWith": "Continue with {provider}",
+    "providers": {
+      "google": "Google",
+      "facebook": "Facebook",
+      "microsoft": "Microsoft"
+    },
+    "or": "or",
+    "emailLabel": "Email address",
+    "sendLink": "Email me a sign-in link",
+    "checkEmailTitle": "Check your email",
+    "checkEmailBody": "We sent you a sign-in link. Open it from your inbox to finish signing in.",
+    "errors": {
+      "invalidEmail": "Enter a valid email address.",
+      "VALIDATION": "The data is not valid.",
+      "DISABLED": "Email sign-in is not available right now.",
+      "SEND_FAILED": "We couldn't send the link. Please try again.",
+      "generic": "Sign-in failed. Try again, or use another sign-in method."
+    }
+  },
+  "AccountMenu": {
+    "login": "Sign in",
+    "account": "My account",
+    "admin": "Dashboard",
+    "logout": "Sign out"
+  },
+  "Account": {
+    "title": "My account",
+    "welcome": "Welcome {name}"
+  },
+  "Admin": {
+    "title": "Dashboard",
+    "sidebar": "Sections",
+    "empty": "Admin sections will appear here in the coming phases.",
+    "nav": {
+      "home": "Home",
+      "products": "Apps",
+      "categories": "Categories"
+    }
+  },
+  "Emails": {
+    "LoginLink": {
+      "subject": "Your sign-in link for {siteName}",
+      "preview": "Your sign-in link",
+      "heading": "Hello,",
+      "body": "Click the button below to sign in. The link is valid for a limited time and works once.",
+      "button": "Sign in",
+      "ignore": "If you didn't request this link, you can ignore this email."
+    }
+  },
+  "Products": {
+    "types": {
+      "EXE": "Desktop",
+      "SAAS": "Web app",
+      "APK": "Android"
+    },
+    "listTitle": "Apps",
+    "listDescription": "Browse our apps and try what fits your business.",
+    "search": "Search",
+    "searchPlaceholder": "Search by name or description",
+    "filterType": "Type",
+    "filterCategory": "Category",
+    "all": "All",
+    "sortLabel": "Sort by",
+    "sorts": {
+      "featured": "Featured",
+      "newest": "Newest",
+      "price_asc": "Price: low to high",
+      "price_desc": "Price: high to low"
+    },
+    "resultsCount": "{count, plural, =0 {No results} one {1 result} other {# results}}",
+    "noResults": "No matching apps. Try changing the filters.",
+    "priceOnRequest": "Price on request",
+    "priceFrom": "From {price}",
+    "tryLive": "Try live",
+    "version": "Version {version}",
+    "orderNow": "Order now",
+    "orderPlan": "Order this plan",
+    "downloadTrial": "Download trial",
+    "media": "Showcase",
+    "description": "Detailed description",
+    "features": "Features",
+    "plans": "Pricing plans",
+    "recommended": "Most popular",
+    "faq": "FAQ",
+    "related": "Similar apps",
+    "billing": {
+      "ONE_TIME": "one-time",
+      "MONTHLY": "per month",
+      "YEARLY": "per year"
+    },
+    "preview": {
+      "title": "Try it now",
+      "start": "Start the demo",
+      "openNewTab": "Open the demo in a new tab",
+      "devices": "Device size",
+      "device": {
+        "desktop": "Desktop",
+        "tablet": "Tablet",
+        "mobile": "Mobile"
+      },
+      "credentials": "Demo credentials",
+      "username": "Username",
+      "password": "Password",
+      "copy": "Copy",
+      "copied": "Copied",
+      "note": "This is a demo whose data is reset periodically.",
+      "frameTitle": "Live app preview"
+    },
+    "video": {
+      "play": "Play video: {title}"
+    },
+    "gallery": {
+      "open": "Open screenshot: {alt}",
+      "dialog": "Screenshot gallery",
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next",
+      "counter": "{current} of {total}"
+    }
+  },
+  "AdminProducts": {
+    "title": "Apps",
+    "new": "New app",
+    "empty": "No apps yet.",
+    "edit": "Edit",
+    "editTitle": "Edit: {name}",
+    "delete": "Delete",
+    "confirmDelete": "Delete this item permanently? This cannot be undone.",
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Saved.",
+    "preview": "Preview",
+    "backToList": "Back to list",
+    "backToEdit": "Back to editing",
+    "previewBanner": "Internal preview. Current status: {status}. Visitors only see published items.",
+    "noCategory": "No category",
+    "noVideo": "No video",
+    "tabs": {
+      "ar": "العربية",
+      "en": "English"
+    },
+    "types": {
+      "EXE": "Desktop",
+      "SAAS": "Web app",
+      "APK": "Android"
+    },
+    "status": {
+      "DRAFT": "Draft",
+      "PUBLISHED": "Published",
+      "ARCHIVED": "Archived"
+    },
+    "priceTypes": {
+      "FIXED": "Fixed price",
+      "FROM": "Starting from",
+      "ON_REQUEST": "On request"
+    },
+    "billing": {
+      "ONE_TIME": "One-time",
+      "MONTHLY": "Monthly",
+      "YEARLY": "Yearly"
+    },
+    "sections": {
+      "basic": "Basics",
+      "price": "Price",
+      "cover": "Cover image",
+      "content": "Content",
+      "demo": "Preview and video",
+      "features": "Features",
+      "media": "Screenshots",
+      "plans": "Pricing plans",
+      "faqs": "FAQ"
+    },
+    "fields": {
+      "slug": "URL slug",
+      "type": "Type",
+      "status": "Status",
+      "category": "Category",
+      "platforms": "Platforms and requirements",
+      "version": "Version",
+      "sortOrder": "Display order",
+      "featured": "Featured (shown on the home page)",
+      "priceType": "Price type",
+      "price": "Price",
+      "currency": "Currency",
+      "coverImage": "Cover",
+      "name": "Name",
+      "tagline": "Tagline",
+      "description": "Detailed description",
+      "seoTitle": "SEO title",
+      "seoDescription": "SEO description",
+      "demoUrl": "Demo URL",
+      "demoEmbeddable": "The demo app allows embedding in a frame (iframe)",
+      "demoUsername": "Demo username",
+      "demoPassword": "Demo password",
+      "videoProvider": "Video provider",
+      "videoId": "Video ID",
+      "trialDownloadUrl": "Trial download URL",
+      "icon": "Icon",
+      "title": "Title",
+      "shortDescription": "Short description",
+      "screenshot": "Screenshot",
+      "alt": "Alt text",
+      "billingPeriod": "Period",
+      "highlighted": "Highlighted plan",
+      "planName": "Plan name",
+      "planFeatures": "Plan features",
+      "question": "Question",
+      "answer": "Answer"
+    },
+    "hints": {
+      "slug": "Lowercase English letters, digits and hyphens only, e.g. my-app.",
+      "platforms": "E.g. Windows 10+ or Android 8+.",
+      "markdown": "Markdown supported.",
+      "englishOptional": "English is optional: if left empty, English visitors see the Arabic text.",
+      "demoUrl": "A demo only, not the production app.",
+      "videoId": "YouTube: the 11-character ID. Bunny: libraryId/videoGuid.",
+      "planFeatures": "One feature per line."
+    },
+    "add": {
+      "feature": "Add feature",
+      "media": "Add screenshot",
+      "plan": "Add plan",
+      "faq": "Add question"
+    },
+    "row": {
+      "up": "Move up",
+      "down": "Move down",
+      "remove": "Remove"
+    },
+    "image": {
+      "choose": "Choose file",
+      "uploading": "Uploading…",
+      "hint": "JPG, PNG or WebP up to {max}MB, or drag and drop a file here.",
+      "errorType": "Unsupported type. Use JPG, PNG or WebP.",
+      "errorSize": "File is larger than {max}MB.",
+      "errorUpload": "Image upload failed.",
+      "notConfigured": "Storage is not configured. Enter an image URL manually."
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "required": "This field is required.",
+      "invalidSlug": "Use lowercase English letters, digits and hyphens only.",
+      "invalidCurrency": "A 3-letter currency code, e.g. USD.",
+      "invalidUrl": "Invalid URL (https, or a path starting with /).",
+      "priceRequired": "Price is required and must be above zero.",
+      "videoBoth": "Choose the provider and enter the ID together.",
+      "videoInvalid": "The video ID is not valid for this provider.",
+      "slugTaken": "This slug is already in use.",
+      "SLUG_TAKEN": "This slug is already in use.",
+      "NOT_FOUND": "Item not found.",
+      "CATEGORY_NOT_FOUND": "Category not found.",
+      "FORBIDDEN": "You don't have permission.",
+      "UNAUTHORIZED": "Please sign in first.",
+      "VALIDATION": "The data is not valid.",
+      "fixFields": "Fix the highlighted fields."
+    }
+  },
+  "AdminCategories": {
+    "title": "Categories",
+    "new": "New category",
+    "edit": "Edit category",
+    "cancel": "Cancel",
+    "empty": "No categories.",
+    "products": "Apps",
+    "editAction": "Edit",
+    "confirmDelete": "Delete this category? Its apps will be left without a category."
   }
 }

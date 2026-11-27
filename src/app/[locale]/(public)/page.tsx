@@ -1,0 +1,72 @@
+import { ArrowRight } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeaturedTabs } from "@/components/catalog/featured-tabs";
+import { ProductCard } from "@/components/catalog/product-card";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
+import { isLocale } from "@/i18n/routing";
+import { notFound } from "next/navigation";
+import { listFeaturedProducts } from "@/server/queries/products";
+
+// ISR: تُعاد توليد الرئيسية عند الحفظ من لوحة التحكم (revalidatePath).
+export const revalidate = 3600;
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  setRequestLocale(locale);
+  const [t, featured] = await Promise.all([
+    getTranslations("Home"),
+    listFeaturedProducts(),
+  ]);
+
+  const items = featured.map((product) => ({
+    id: product.id,
+    type: product.type,
+    node: <ProductCard product={product} locale={locale} />,
+  }));
+
+  return (
+    <>
+      <section className="mx-auto max-w-5xl px-4 py-20 text-center">
+        <h1 className="text-4xl font-bold sm:text-5xl">{t("title")}</h1>
+        <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg">
+          {t("subtitle")}
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Button asChild size="lg">
+            <Link href="/products">
+              {t("browse")}
+              <ArrowRight className="size-4 rtl:rotate-180" aria-hidden />
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/contact">{t("contact")}</Link>
+          </Button>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="featured-title"
+        className="mx-auto max-w-6xl px-4 pb-20"
+      >
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <h2 id="featured-title" className="text-2xl font-bold">
+            {t("featured")}
+          </h2>
+          <Link
+            href="/products"
+            className="text-primary text-sm font-medium hover:underline"
+          >
+            {t("viewAll")}
+          </Link>
+        </div>
+        <FeaturedTabs items={items} />
+      </section>
+    </>
+  );
+}

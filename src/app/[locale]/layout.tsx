@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Header } from "@/components/layout/header";
+import { AuthSessionProvider } from "@/components/layout/session-provider";
 import { Footer } from "@/components/layout/footer";
 import { getDirection, isLocale, routing } from "@/i18n/routing";
 import "../globals.css";
@@ -41,9 +42,11 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <body className="flex min-h-screen flex-col antialiased">
         <NextIntlClientProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <AuthSessionProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </AuthSessionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

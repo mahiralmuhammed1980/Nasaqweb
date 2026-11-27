@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { AccountMenu } from "./account-menu";
 import { LocaleSwitcher } from "./locale-switcher";
 
 // روابط مؤقتة: تُوجَّه كلها للرئيسية حتى تُبنى صفحاتها في المراحل التالية
@@ -25,9 +26,12 @@ export async function Header() {
             </Link>
           ))}
         </nav>
-        <Suspense>
-          <LocaleSwitcher />
-        </Suspense>
+        <div className="flex items-center gap-2">
+          <Suspense>
+            <LocaleSwitcher />
+          </Suspense>
+          <AccountMenu />
+        </div>
       </div>
     </header>
   );
