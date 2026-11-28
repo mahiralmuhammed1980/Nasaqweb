@@ -37,6 +37,8 @@ model User {
 
   accounts Account[]
   sessions Session[]
+  orders   OrderRequest[]
+  messages ContactMessage[]
 }
 
 model Account {
@@ -174,6 +176,7 @@ model Product {
   faqs         ProductFaq[]
   offers       OfferProduct[]
   hardware     HardwareProduct[]
+  orders       OrderRequest[]
 
   @@index([status, featured, sortOrder])
   @@index([type])
@@ -252,6 +255,7 @@ model ProductPlan {
 
   product      Product                  @relation(fields: [productId], references: [id], onDelete: Cascade)
   translations ProductPlanTranslation[]
+  orders       OrderRequest[]
 
   @@index([productId, sortOrder])
 }
@@ -319,6 +323,7 @@ model Offer {
 
   translations OfferTranslation[]
   products     OfferProduct[]
+  orders       OrderRequest[]
 
   @@index([isActive, startsAt, endsAt])
 }
@@ -393,6 +398,7 @@ model Hardware {
   category     HardwareCategory?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
   translations HardwareTranslation[]
   products     HardwareProduct[]
+  orders       OrderRequest[]
 
   @@index([status])
   @@index([categoryId])
@@ -421,4 +427,149 @@ model HardwareProduct {
 
   @@id([hardwareId, productId])
   @@index([productId])
+}
+
+// ===== المرحلة 4: الطلبات والتواصل والموافقات =====
+
+enum PreferredChannel {
+  WHATSAPP
+  PHONE
+  EMAIL
+}
+
+enum OrderStatus {
+  NEW
+  CONTACTED
+  QUOTED
+  WON
+  LOST
+  SPAM
+}
+
+enum ActivityType {
+  STATUS_CHANGE
+  NOTE
+  EMAIL_SENT
+}
+
+enum MessageStatus {
+  NEW
+  READ
+  HANDLED
+}
+
+enum ConsentChannel {
+  EMAIL
+  WHATSAPP
+  SMS
+}
+
+enum ConsentSource {
+  ONBOARDING
+  ORDER_FORM
+  CONTACT_FORM
+  ACCOUNT
+  UNSUBSCRIBE
+  ACCOUNT_DELETION
+}
+
+model OrderRequest {
+  id     String @id @default(cuid())
+  // رقم تسلسلي مقروء يبدأ من 1001 (انظر migration)
+  number Int    @unique @default(autoincrement())
+
+  productId  String?
+  hardwareId String?
+  planId     String?
+  offerId    String?
+  userId     String?
+
+  name             String
+  phone            String
+  phoneHasWhatsapp Boolean          @default(false)
+  email            String?
+  company          String?
+  city             String?
+  country          String?
+  preferredChannel PreferredChannel
+  message          String?
+  status           OrderStatus      @default(NEW)
+
+  locale      String
+  referrer    String?
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  ipHash      String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // المنتج/الجهاز/الخطة/العرض تبقى مرجعاً اختيارياً: حذفها لا يحذف الطلب التاريخي
+  product  Product?     @relation(fields: [productId], references: [id], onDelete: SetNull)
+  hardware Hardware?    @relation(fields: [hardwareId], references: [id], onDelete: SetNull)
+  plan     ProductPlan? @relation(fields: [planId], references: [id], onDelete: SetNull)
+  offer    Offer?       @relation(fields: [offerId], references: [id], onDelete: SetNull)
+  user     User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  activities RequestActivity[]
+
+  @@index([status, createdAt])
+  @@index([productId])
+  @@index([hardwareId])
+  @@index([createdAt])
+}
+
+model RequestActivity {
+  id        String       @id @default(cuid())
+  requestId String
+  type      ActivityType
+  payload   Json
+  // null للأحداث التي يولّدها النظام (مثل بريد التأكيد التلقائي)
+  adminId   String?
+  createdAt DateTime     @default(now())
+
+  request OrderRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([requestId, createdAt])
+}
+
+model ContactMessage {
+  id        String        @id @default(cuid())
+  name      String
+  email     String?
+  phone     String?
+  subject   String
+  message   String
+  status    MessageStatus @default(NEW)
+  userId    String?
+  locale    String
+  ipHash    String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+}
+
+// سجل تاريخي للإضافة فقط: UPDATE وDELETE ممنوعان بمشغّل في قاعدة البيانات (انظر migration).
+// userId نص عادي دون علاقة (FK) كي لا يعدّل حذفُ المستخدم السجلَّ القديم.
+model ConsentRecord {
+  id            String         @id @default(cuid())
+  userId        String?
+  email         String?
+  phone         String?
+  channel       ConsentChannel
+  granted       Boolean
+  source        ConsentSource
+  policyVersion Int
+  consentText   String
+  ipHash        String?
+  userAgent     String?
+  createdAt     DateTime       @default(now())
+
+  @@index([email, channel, createdAt])
+  @@index([phone, channel, createdAt])
+  @@index([userId, channel, createdAt])
 }

@@ -5,6 +5,12 @@ import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { AuthSessionProvider } from "@/components/layout/session-provider";
+import { UtmCapture } from "@/components/forms/utm-capture";
+import {
+  WhatsAppFloating,
+  WhatsAppProvider,
+} from "@/components/layout/whatsapp";
+import { getSiteSettings } from "@/server/queries/settings";
 import { Footer } from "@/components/layout/footer";
 import { getDirection, isLocale, routing } from "@/i18n/routing";
 import "../globals.css";
@@ -33,6 +39,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
+  const { contact } = await getSiteSettings();
 
   return (
     <html
@@ -43,9 +50,13 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="flex min-h-screen flex-col antialiased">
         <NextIntlClientProvider>
           <AuthSessionProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <WhatsAppProvider number={contact.whatsapp || null}>
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <WhatsAppFloating />
+              <UtmCapture />
+            </WhatsAppProvider>
           </AuthSessionProvider>
         </NextIntlClientProvider>
       </body>

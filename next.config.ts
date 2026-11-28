@@ -8,7 +8,12 @@ function r2Pattern() {
   if (!raw) return [];
   try {
     const url = new URL(raw);
-    return [{ protocol: url.protocol.replace(":", "") as "http" | "https", hostname: url.hostname }];
+    return [
+      {
+        protocol: url.protocol.replace(":", "") as "http" | "https",
+        hostname: url.hostname,
+      },
+    ];
   } catch {
     return [];
   }
@@ -17,7 +22,10 @@ function r2Pattern() {
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
-    remotePatterns: [...r2Pattern(), { protocol: "https", hostname: "i.ytimg.com" }],
+    remotePatterns: [
+      ...r2Pattern(),
+      { protocol: "https", hostname: "i.ytimg.com" },
+    ],
   },
 };
 

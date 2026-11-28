@@ -169,7 +169,7 @@ test.describe("الأجهزة (عام)", () => {
     await expect(page.getByRole("cell", { name: "203 dpi" })).toBeVisible();
     await expect(
       page.getByRole("link", { name: "Inquire / Order" }),
-    ).toHaveAttribute("href", /contact\?hardware=zebra-zd220/);
+    ).toHaveAttribute("href", /order\?hardware=zebra-zd220/);
     await expect(
       page.getByRole("heading", { name: "Cloud Restaurant Manager" }),
     ).toBeVisible();

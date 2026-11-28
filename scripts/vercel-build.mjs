@@ -15,7 +15,8 @@ function run(command, args) {
 }
 
 // البناء يقرأ قاعدة البيانات، فنفشل مبكراً برسالة واضحة بدل خطأ Prisma الغامض.
-const missing = ["DATABASE_URL", "DIRECT_URL"].filter((name) => !env[name]);
+// DIRECT_URL اختياري: prisma.config.ts يعود إلى DATABASE_URL عند غيابه (كافٍ حين يكون الرابط مباشراً بصيغة postgres://).
+const missing = ["DATABASE_URL"].filter((name) => !env[name]);
 if (missing.length > 0) {
   console.error(
     `[vercel-build] Missing environment variables: ${missing.join(", ")}`,
